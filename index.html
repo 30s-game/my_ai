@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom AI Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <style>
+        :root { --primary: #2b5a9e; --bg: #f0f2f5; }
+        body { font-family: sans-serif; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        #chat-window { width: 400px; height: 550px; background: white; border-radius: 15px; display: flex; flex-direction: column; shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #ddd; }
+        #messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px; border-radius: 10px; max-width: 80%; font-size: 14px; }
+        .user { align-self: flex-end; background: var(--primary); color: white; }
+        .ai { align-self: flex-start; background: #e4e6eb; color: black; }
+        #input-group { display: flex; padding: 15px; border-top: 1px solid #eee; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; outline: none; }
+        button { margin-left: 10px; padding: 10px 15px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #setup-area { margin-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div id="chat-window">
+    <div id="messages"><div class="msg ai">데이터를 로드하고 학습을 시작해주세요.</div></div>
+    <div id="input-group">
+        <input type="text" id="userInput" placeholder="메시지 입력..." disabled>
+        <button id="sendBtn" onclick="sendMessage()" disabled>전송</button>
+    </div>
+</div>
+
+<div id="setup-area">
+    <button id="trainBtn" onclick="initAI()">1. 데이터 로드 및 AI 학습 시작</button>
+    <p id="status" style="font-size: 12px; color: #777;">상태: 대기 중</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
